@@ -1,0 +1,38 @@
+# Example tool definitions for gate-cli
+# Usage: gate tools register -f examples/tools.yaml
+
+tools:
+  - name: read_logs
+    execution_class: read_only
+    description: Read application logs
+    inputs:
+      path: string
+      lines: integer
+
+  - name: suggest_fix
+    execution_class: advisory
+    description: Suggest a code fix without executing
+    inputs:
+      file: string
+      suggestion: string
+
+  - name: send_notification
+    execution_class: external_action
+    description: Send a Slack notification
+    inputs:
+      channel: string
+      message: string
+
+  - name: update_config
+    execution_class: state_mutation
+    description: Update runtime configuration
+    inputs:
+      key: string
+      value: string
+
+  - name: deploy_production
+    execution_class: high_impact
+    description: Deploy to production environment
+    inputs:
+      branch: string
+      force: boolean

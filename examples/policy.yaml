@@ -1,0 +1,38 @@
+# Example policy file for gate-cli policy commands
+# Usage: gate policy validate -f examples/policy.yaml
+#        gate policy test -f examples/policy.yaml --tool deploy_production --mode 0.7
+
+name: production-safety
+version: "1.0"
+description: Block high-impact tools in elevated+ mode unless human-approved
+
+rules:
+  - name: block-deploys-elevated
+    action: deny
+    conditions:
+      - field: execution_class
+        operator: eq
+        value: high_impact
+      - field: mode
+        operator: gte
+        value: 0.5
+    reason: "High-impact tools blocked above mode 0.5"
+
+  - name: allow-readonly-always
+    action: allow
+    conditions:
+      - field: execution_class
+        operator: eq
+        value: read_only
+    reason: "Read-only tools always permitted"
+
+  - name: restrict-mutations-crisis
+    action: deny
+    conditions:
+      - field: execution_class
+        operator: eq
+        value: state_mutation
+      - field: mode
+        operator: gte
+        value: 0.65
+    reason: "State mutations blocked during crisis"
