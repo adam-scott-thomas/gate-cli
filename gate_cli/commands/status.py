@@ -52,7 +52,7 @@ def status(ctx):
             latest = entries[-1]
             click.echo()
             click.echo(f"Mode History: {len(entries)} entries")
-            click.echo(f"  Latest: {latest['mode']} ({latest['mode_status']})")
+            click.echo(f"  Latest: {latest['mode']} ({latest['mode_zone']})")
             click.echo(f"  Range: {min(modes):.2f} — {max(modes):.2f}")
             click.echo(f"  Average: {sum(modes)/len(modes):.2f}")
     except Exception:

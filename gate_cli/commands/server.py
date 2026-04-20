@@ -51,7 +51,7 @@ def history(ctx):
             click.echo("No mode history yet.")
             return
         render(entries, ctx.obj["output"], title="Mode History",
-               columns=["timestamp", "mode", "mode_status",
+               columns=["timestamp", "mode", "mode_zone",
                          "visible_count", "suppressed_count"])
     except Exception as e:
         error(f"Cannot fetch history: {e}")

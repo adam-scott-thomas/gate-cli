@@ -92,7 +92,7 @@ def filter(ctx, mode, file_path):
     client = GateHTTPClient(ctx.obj["server_url"])
     try:
         data = client.filter_tools(mode)
-        click.echo(f"Mode: {data['mode']} ({data['mode_status']})")
+        click.echo(f"Mode: {data['mode']} ({data['mode_zone']})")
         click.echo()
         visible = data.get("visible", [])
         suppressed = data.get("suppressed", [])
@@ -131,7 +131,7 @@ def _filter_local(ctx, mode, file_path):
         ))
 
     result = gate.filter(mode)
-    click.echo(f"Mode: {result.mode} ({result.mode_status}) [local]")
+    click.echo(f"Mode: {result.mode} ({result.mode_zone}) [local]")
     click.echo()
     visible = [{"name": t.name, "execution_class": t.execution_class}
                for t in result.visible]

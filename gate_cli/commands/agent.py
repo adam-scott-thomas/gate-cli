@@ -65,7 +65,7 @@ def run(ctx, file_path, mode):
         success(f"Registered {len(tool_list)} tools")
 
     available = ag.filter_available()
-    click.echo(f"Mode: {available['mode']} ({available['mode_status']})")
+    click.echo(f"Mode: {available['mode']} ({available['mode_zone']})")
     render(
         [{"name": n, "status": "visible"} for n in available["visible"]] +
         [{"name": n, "status": "suppressed"} for n in available["suppressed"]],
@@ -114,7 +114,7 @@ def test(ctx, file_path, mode, tool_name):
 
     result = ag.act(tool_name)
     if result.executed:
-        success(f"{tool_name} ALLOWED at mode {mode} ({result.mode_status})")
+        success(f"{tool_name} ALLOWED at mode {mode} ({result.mode_zone})")
     else:
         error(f"{tool_name} BLOCKED at mode {mode}: {result.reason}")
 

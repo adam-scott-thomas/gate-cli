@@ -44,7 +44,7 @@ def watch(ctx, interval, mode):
                 if mode is not None:
                     data = client.filter_tools(mode)
                     visible = {t["name"] for t in data.get("visible", [])}
-                    status = data.get("mode_status", "?")
+                    status = data.get("mode_zone", "?")
                     click.echo(f"[{time.strftime('%H:%M:%S')}] "
                                f"mode={mode} ({status}) "
                                f"visible={len(visible)} "

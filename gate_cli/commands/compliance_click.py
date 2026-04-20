@@ -57,9 +57,9 @@ def report(ctx, since, fmt):
             warn("No mode history -- nothing to report")
             return
 
-        crisis = sum(1 for e in entries if e.get("mode_status") == "crisis")
-        elevated = sum(1 for e in entries if e.get("mode_status") == "elevated")
-        normal = sum(1 for e in entries if e.get("mode_status") == "normal")
+        crisis = sum(1 for e in entries if e.get("mode_zone") == "crisis")
+        elevated = sum(1 for e in entries if e.get("mode_zone") == "elevated")
+        normal = sum(1 for e in entries if e.get("mode_zone") == "normal")
         modes = [e["mode"] for e in entries]
         total_suppressed = sum(e.get("suppressed_count", 0) for e in entries)
 
@@ -96,7 +96,7 @@ def check(ctx):
             return
 
         issues = 0
-        crisis = [e for e in entries if e.get("mode_status") == "crisis"]
+        crisis = [e for e in entries if e.get("mode_zone") == "crisis"]
         if crisis:
             warn(f"{len(crisis)} crisis-mode operations detected")
             issues += 1
