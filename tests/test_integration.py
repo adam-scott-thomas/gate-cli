@@ -1,11 +1,17 @@
-"""Integration tests — run against a live gate-server.
+"""Integration tests — require a live gate-server at localhost:8900.
 
-These tests require gate-server running at localhost:8900.
-Skip with: pytest -m "not integration"
+Marked with @pytest.mark.integration (applied to every test in this module
+via pytestmark). Excluded by the default `addopts` in pyproject.toml so
+`pytest` alone runs only unit tests.
+
+Run integration tests explicitly:
+    pytest -m integration                       # only integration tests
+    pytest -m "integration or not integration"  # everything
+
+Prereq: a gate-server listening on localhost:8900 (see gate-server README).
 """
 
 import json
-import os
 import pytest
 from click.testing import CliRunner
 
@@ -13,11 +19,8 @@ from gate_cli.main import cli
 
 runner = CliRunner()
 
-# Skip all tests if server isn't reachable
-pytestmark = pytest.mark.skipif(
-    os.environ.get("GATE_SKIP_INTEGRATION") == "1",
-    reason="GATE_SKIP_INTEGRATION=1",
-)
+# Apply @pytest.mark.integration to every test in this module.
+pytestmark = pytest.mark.integration
 
 
 def _invoke(*args):

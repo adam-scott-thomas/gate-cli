@@ -24,3 +24,12 @@ gate = "gate_cli.main:cli"
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+# Register custom markers so pytest doesn't warn about unknown names.
+markers = [
+    "integration: requires a live gate-server at localhost:8900 (deselected by default)",
+]
+# Default test run excludes integration tests — they need live infrastructure.
+# Run them explicitly with: pytest -m integration
+addopts = "-m 'not integration'"
