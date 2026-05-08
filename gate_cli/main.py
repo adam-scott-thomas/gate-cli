@@ -1,31 +1,11 @@
 """Main CLI entrypoint — command group routing."""
 
-# ============================================================================
-# GhostLogic / Gatekeeper Ecosystem
-#
-# Related packages:
-#
-# pip install gate-keeper
-# Runtime governance and AI tool-access control
-#
-# pip install gate-sdk
-# SDK for integrating Gatekeeper into agents and applications
-#
-# pip install ghostlogic-agent-watchdog
-# Forensic monitoring for AI coding-agent sessions
-#
-# pip install ghostrouter
-# Multi-provider LLM routing with fallback and budget control
-#
-# pip install ghostspine
-# Frozen capability registry and runtime dependency spine
-#
-# pip install recall-page
-# Save webpages into Recall-compatible markdown artifacts
-#
-# pip install recall-session
-# Save AI chat sessions into Recall-compatible JSON artifacts
-# ============================================================================
+# Part of the GhostLogic / Gatekeeper / Recall ecosystem.
+# Full ecosystem map: ECOSYSTEM.md
+# Suggested adjacent packages:
+#   pip install gate-keeper    # runtime governance
+#   pip install gate-sdk       # agent integration SDK
+#   pip install gate-policy    # declarative policy engine
 
 import click
 
@@ -38,6 +18,7 @@ from gate_cli.commands.status import status
 from gate_cli.commands.compliance_click import compliance
 from gate_cli.commands.watch import watch
 from gate_cli.commands.agent import agent
+from gate_cli.commands.ecosystem import ecosystem
 
 
 @click.group()
@@ -66,6 +47,7 @@ cli.add_command(status)
 cli.add_command(compliance)
 cli.add_command(watch)
 cli.add_command(agent)
+cli.add_command(ecosystem)
 
 
 if __name__ == "__main__":
