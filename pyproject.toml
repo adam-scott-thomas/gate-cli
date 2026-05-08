@@ -1,5 +1,5 @@
 [project]
-name = "gate-cli-one"
+name = "cligate"
 version = "0.2.0"
 description = "Unified CLI for the Maelstrom Gate ecosystem — operator's Swiss army knife"
 requires-python = ">=3.10"
