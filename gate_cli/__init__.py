@@ -1,4 +1,4 @@
-"""gate-cli — Unified CLI for the Maelstrom Gate ecosystem.
+"""gate-cli — Unified CLI for the Gatekeeper ecosystem.
 
     gate server health
     gate tools register -f tools.yaml

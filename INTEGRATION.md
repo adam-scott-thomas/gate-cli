@@ -35,7 +35,7 @@ gate-cli (Layer 3)
 
 ### gate-core (local mode)
 - **Flag:** `--local`
-- **Import:** `from maelstrom_gate import Gate, Tool`
+- **Import:** `from gatekeeper import Gate, Tool`
 - **Used for:** One-shot register + filter without a running server
 - **Limitation:** No envelope operations in local mode (needs signing key config)
 

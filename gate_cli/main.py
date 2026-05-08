@@ -24,7 +24,7 @@ from gate_cli.commands.agent import agent
               default="table", help="Output format")
 @click.pass_context
 def cli(ctx, server_url, local, output):
-    """Maelstrom Gate CLI — runtime governance for AI tool access."""
+    """Gatekeeper CLI — runtime governance for AI tool access."""
     ctx.ensure_object(dict)
     ctx.obj["server_url"] = server_url
     ctx.obj["local"] = local

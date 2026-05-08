@@ -52,7 +52,7 @@ def register(ctx, file_path):
 
 def _register_local(tool_list):
     """Register tools using gate-core directly (no server)."""
-    from maelstrom_gate import Gate, Tool
+    from gatekeeper import Gate, Tool
     gate = Gate()
     for t in tool_list:
         gate.add_tool(Tool(
@@ -111,7 +111,7 @@ def _filter_local(ctx, mode, file_path):
     if not file_path:
         error("Local filter requires --file (-f) with tool definitions")
         return
-    from maelstrom_gate import Gate, Tool
+    from gatekeeper import Gate, Tool
 
     path = Path(file_path)
     raw = path.read_text()
